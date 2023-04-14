@@ -1,0 +1,98 @@
+.movies_credits {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  gap: 1rem;
+  width: 100%;
+  background-color: #1b1f32;
+  .credits_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .credits_title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #e0e3e8;
+    }
+    .credits_button {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      color: #fff;
+      .credits_icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .grid_cast_card {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    @media only screen and (min-width: 1028px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .cast_Card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      cursor: pointer;
+
+      .movie_card_image {
+        width: 250px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .movie_card_title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .movie_card_desc {
+        font-size: 12px;
+        color: #e0e3e8;
+      }
+    }
+  }
+
+  .cast_cards {
+    display: flex;
+    width: 3200px;
+    position: relative;
+    transition: all 0.3s;
+    gap: 2rem;
+    .cast_Card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      cursor: pointer;
+
+      .movie_card_image {
+        width: 250px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .movie_card_title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .movie_card_desc {
+        font-size: 12px;
+        color: #e0e3e8;
+      }
+    }
+  }
+}

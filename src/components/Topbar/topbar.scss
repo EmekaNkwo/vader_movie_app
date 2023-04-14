@@ -1,0 +1,14 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1d283c;
+  height: 80px;
+  width: 100%;
+  padding: 0 1rem;
+
+  .search_field {
+    width: 300px;
+    background: #494d61;
+  }
+}

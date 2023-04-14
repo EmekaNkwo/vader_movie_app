@@ -1,0 +1,29 @@
+.search_input_field {
+  width: 300px;
+  background: #494d61;
+  padding: 0.6rem;
+  border-radius: 10px;
+  gap: 1rem;
+  border: none;
+  display: flex;
+  align-items: center;
+
+  .search_icon {
+    color: #fff;
+    font-size: 1rem;
+  }
+  .search_input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: #ffffff9a;
+      font-size: 1rem;
+    }
+  }
+}

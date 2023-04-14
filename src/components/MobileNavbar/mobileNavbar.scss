@@ -1,0 +1,42 @@
+.mobile {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  .mobile_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1d283c;
+    height: 80px;
+    width: 100%;
+    padding: 0 1.5rem;
+
+    .search_icon {
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+  .search_field {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+
+    height: 100vh;
+    top: 7.5%;
+    left: 0%;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    .search {
+      background: #1b1f32;
+      width: 100%;
+      padding: 1.5rem;
+
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
