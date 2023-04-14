@@ -43,7 +43,7 @@ function HeroContainer({ id, type }) {
     <>
       {contextHolder}
       <div className="hero_container" style={hero_background}>
-        {movieQuery.status === "loading" ? (
+        {movieQuery?.status === "loading" ? (
           <Spin />
         ) : (
           <div className="hero_container_content">
