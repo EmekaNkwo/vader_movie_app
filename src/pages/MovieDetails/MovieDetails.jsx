@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import HeroContainer from "../../components/HeroContainer/HeroContainer";
 import { MovieCredits, MoviesCollection } from "../../components";
