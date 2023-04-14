@@ -5,6 +5,13 @@
   top: 50%;
   position: relative;
 
+  .hero_loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .hero_container_content {
     display: flex;
     padding: 2rem;
@@ -27,6 +34,7 @@
       color: #fff;
       @media screen and (max-width: 960px) {
         width: 100%;
+        font-size: 38px;
       }
     }
     .hero_ratings {
