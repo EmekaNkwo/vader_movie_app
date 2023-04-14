@@ -10,11 +10,6 @@ function MovieDetails() {
 
   const isSmallScreen = useMediaQuery("(max-width: 1023px)");
 
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      window.scrollTo(0, 0);
-    });
-  }, []);
   const onChange = (key) => {
     console.log(key);
   };
