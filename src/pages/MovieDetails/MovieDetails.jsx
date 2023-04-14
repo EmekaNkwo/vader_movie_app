@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeroContainer from "../../components/HeroContainer/HeroContainer";
 import { MovieCredits, MoviesCollection } from "../../components";
@@ -10,6 +10,11 @@ function MovieDetails() {
 
   const isSmallScreen = useMediaQuery("(max-width: 1023px)");
 
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+    });
+  }, []);
   const onChange = (key) => {
     console.log(key);
   };

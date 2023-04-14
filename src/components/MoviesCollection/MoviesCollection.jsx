@@ -96,6 +96,7 @@ function MoviesCollection({ title }) {
                   key={index}
                   onClick={() => {
                     navigate(`/home/movie/${movieCard.id}`, {});
+                    window.scrollTo(0, 0);
                   }}
                 >
                   <div className="movieCard">
