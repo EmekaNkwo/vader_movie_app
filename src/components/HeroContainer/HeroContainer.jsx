@@ -29,6 +29,7 @@ function HeroContainer({ id, type }) {
     background: `linear-gradient(rgba(20, 20, 20, 0.723), rgba(0, 0, 0, 0.689)), url(${backdrop})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   };
 
   const goToMovieDetails = () => {
