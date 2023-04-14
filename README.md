@@ -1,6 +1,6 @@
 # OBIEX FRONTEND ASSESSMENT
 
-## Overview [Live Demo]()
+## Overview [Live Demo](https://obiex-nkwo.netlify.app/home)
 
 This is a Simple Movie App that fetches data from the TMDB API which displays collections of movies and movie details. The Application was built using React, React Query, Antd, SCSS, Webpack
 
