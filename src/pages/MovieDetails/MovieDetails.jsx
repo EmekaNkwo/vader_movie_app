@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeroContainer from "../../components/HeroContainer/HeroContainer";
 import { MovieCredits, MoviesCollection } from "../../components";
-import useMediaQuery from "../../shared/hooks/useMediaQuery";
+
 import { Tabs } from "antd";
+import useMovieQuery from "../../components/useMovieQuery";
+import { useMovieState } from "../../state/movie";
+import RecommendedMovies from "../../components/RecommendedMovies/RecommendedMovies";
 
 function MovieDetails() {
   const { id } = useParams();
+  const { isSmallScreen } = useMovieQuery();
 
-  const isSmallScreen = useMediaQuery("(max-width: 1023px)");
+  useEffect(() => {
+    if (id) {
+      useMovieState.setState({ movieID: id });
+    }
+  }, [id]);
 
-  const onChange = (key) => {
-    console.log(key);
-  };
   const items = [
     {
       key: "1",
@@ -33,6 +38,7 @@ function MovieDetails() {
       ),
     },
   ];
+
   return (
     <div>
       <HeroContainer id={id} type="movieDetailPage" />
@@ -41,7 +47,6 @@ function MovieDetails() {
           <Tabs
             defaultActiveKey="1"
             items={items}
-            onChange={onChange}
             style={{
               backgroundColor: "#1b1f32",
               color: "#fff",
@@ -51,8 +56,9 @@ function MovieDetails() {
         </>
       ) : (
         <>
-          <MovieCredits title="Cast" id={id} />
-          <MoviesCollection title="Recommended Movies" />
+          <MovieCredits title="Cast" />
+          {/* <MoviesCollection title="Recommended Movies" /> */}
+          <RecommendedMovies title={"Similar Movies"} />
         </>
       )}
     </div>

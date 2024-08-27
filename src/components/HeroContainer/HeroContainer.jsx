@@ -1,38 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillInfoCircleFill, BsPlayCircleFill } from "react-icons/bs";
 import { MdStarHalf } from "react-icons/md";
 import { FilledButton } from "../../shared/ui/CustomButtons/CuttomButtons";
 import "./heroContainer.scss";
-import { useQuery } from "@tanstack/react-query";
-import { getMovie } from "../../shared/api/fetchMovies";
+
 import { useNavigate } from "react-router-dom";
 import { Spin, message } from "antd";
+import TrailerModal from "../TrailerModal/TrailerModal";
+import useMovieQuery from "../useMovieQuery";
+import { useMovieState } from "../../state/movie";
 
 function HeroContainer({ id, type }) {
   const navigate = useNavigate();
-  const [messageApi, contextHolder] = message.useMessage();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [videoData, setVideoData] = React.useState({});
 
-  const movieQuery = useQuery({
-    queryKey: ["movie", id],
-    queryFn: () => getMovie(id),
-  });
+  const { videoQuery, movieQuery } = useMovieQuery();
 
   if (movieQuery.status === "error") {
-    return messageApi.open({
-      type: "error",
-      content: `${JSON.stringify(movieQuery.error)}`,
-    });
+    message.error(`${JSON.stringify(movieQuery?.error?.message)}`);
   }
 
-  const backdrop = `https://image.tmdb.org/t/p/original/${movieQuery.data?.backdrop_path}`;
+  const backdrop = `https://image.tmdb.org/t/p/original/${movieQuery?.data?.backdrop_path}`;
   const hero_background = {
-    background: `linear-gradient(rgba(20, 20, 20, 0.723), rgba(0, 0, 0, 0.689)), url(${backdrop})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
+    background: `linear-gradient(rgba(20, 20, 20, 0.723), rgba(0, 0, 0, 0.789)), url(${backdrop})`,
   };
 
   const goToMovieDetails = () => {
+    useMovieState.setState({ movieID: id });
     navigate(`/home/movie/${id}`, {
       state: {
         id,
@@ -40,9 +35,27 @@ function HeroContainer({ id, type }) {
     });
   };
 
+  useEffect(() => {
+    const data = videoQuery?.data;
+    if (data?.videos && data?.videos?.results) {
+      const trailer = data.videos.results.find(
+        (vid) => vid.name === "Official Trailer"
+      );
+
+      setVideoData(trailer ? trailer : data.videos.results[0]);
+    }
+  }, [videoQuery?.data]);
+
   return (
     <>
-      {contextHolder}
+      {isOpenModal && (
+        <TrailerModal
+          isModalOpen={isOpenModal}
+          setIsModalOpen={setIsOpenModal}
+          video={videoData?.key}
+        />
+      )}
+
       <div className="hero_container" style={hero_background}>
         {movieQuery?.status === "loading" ? (
           <Spin className="hero_loader" />
@@ -67,18 +80,22 @@ function HeroContainer({ id, type }) {
             </div>
             <p className="hero_description">{movieQuery?.data?.overview}</p>
             <div className="hero_buttons">
-              <FilledButton
-                icon={<BsPlayCircleFill />}
-                title="Watch now"
-                className="watch_button"
-                onClick={goToMovieDetails}
-              />
+              {type === "movieDetailPage" ? (
+                <FilledButton
+                  icon={<BsPlayCircleFill />}
+                  title="Watch trailer"
+                  className="watch_button"
+                  onClick={() => setIsOpenModal(true)}
+                />
+              ) : null}
               {type !== "movieDetailPage" ? (
                 <FilledButton
                   icon={<BsFillInfoCircleFill />}
                   title="Learn more"
                   className="info_button"
-                  onClick={goToMovieDetails}
+                  onClick={() => {
+                    goToMovieDetails();
+                  }}
                 />
               ) : null}
             </div>

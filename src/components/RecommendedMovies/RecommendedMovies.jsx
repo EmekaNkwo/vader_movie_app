@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react";
-import "./moviesCollection.scss";
-
-import { Spin, message } from "antd";
-import { useMovieState } from "../../state/movie";
+import React, { useState } from "react";
 import useMovieQuery from "../useMovieQuery";
-import axios from "axios";
 import { apiKey } from "../../shared/api/fetchMovies";
+import "../MoviesCollection/moviesCollection.scss";
+import { useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
+import { useMovieState } from "../../state/movie";
 
-function MoviesCollection({ title }) {
-  const { navigate, collectionQuery } = useMovieQuery();
-
-  if (collectionQuery.status === "error") {
-    message.error(`${JSON.stringify(collectionQuery?.error?.message)}`);
-  }
-  const [collectionMovies, setCollectionMovies] = useState([]);
+const RecommendedMovies = ({ title }) => {
+  const { recommendationQuery, navigate } = useMovieQuery();
+  const [similarMovies, setSimilarMovies] = useState([]);
   const headers = {
     accept: "application/json",
     Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
@@ -22,8 +18,8 @@ function MoviesCollection({ title }) {
   useEffect(() => {
     let counter = 12;
     // getting data for each of the recommened movies
-    if (Array.isArray(collectionQuery?.data?.arr)) {
-      for (let movie of collectionQuery?.data?.arr) {
+    if (Array.isArray(recommendationQuery?.data?.movies)) {
+      for (let movie of recommendationQuery?.data?.movies) {
         axios
           .get(
             `https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movie}`,
@@ -32,21 +28,21 @@ function MoviesCollection({ title }) {
             }
           )
           .then((res) => {
-            setCollectionMovies((prev) => [...prev, res?.data?.results[0]]);
+            setSimilarMovies((prev) => [...prev, res?.data?.results[0]]);
           });
         counter--;
         if (counter === 0) break;
       }
     } else {
-      console.log("collection.array is not an array");
+      console.log("recommendationQuery.data is not an array");
       // handle the case where it's not an array
     }
-  }, [collectionQuery?.data?.arr]);
+  }, [recommendationQuery?.data?.movies]);
 
   return (
     <div className="movies_collection_container">
       <div className="movies_collection">
-        {collectionQuery.status === "loading" ? (
+        {recommendationQuery?.status === "loading" ? (
           <Spin />
         ) : (
           <>
@@ -54,7 +50,7 @@ function MoviesCollection({ title }) {
               <h3 className="collection_title">{title}</h3>
             </div>
             <div className={"grid_movies_card"}>
-              {collectionMovies?.map((movieCard, index) => (
+              {similarMovies?.map((movieCard, index) => (
                 <div
                   key={index}
                   onClick={() => {
@@ -89,6 +85,6 @@ function MoviesCollection({ title }) {
       </div>
     </div>
   );
-}
+};
 
-export default MoviesCollection;
+export default RecommendedMovies;

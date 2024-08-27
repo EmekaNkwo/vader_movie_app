@@ -4,7 +4,7 @@ import "./footer.scss";
 function Footer() {
   return (
     <div className="footer">
-      <p>© 2023 Front-end assessment. Obiex</p>
+      <p>© 2023 Movie Recommendation App</p>
     </div>
   );
 }

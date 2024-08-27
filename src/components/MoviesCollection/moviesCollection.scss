@@ -1,106 +1,67 @@
-.movies_collection {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  gap: 1rem;
-  width: 100%;
+.movies_collection_container {
   background-color: #1b1f32;
-  .collection_header {
+  .movies_collection {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .collection_title {
-      font-size: 24px;
-      font-weight: 600;
-      color: #e0e3e8;
-    }
-    .collection_button {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      color: #fff;
-      .collection_icon {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .grid_movies_card {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-
-    @media only screen and (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.8rem;
-    }
-
-    @media only screen and (min-width: 1028px) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-    .movieCard {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      cursor: pointer;
-
-      .movie_card_image {
-        width: 250px;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 6px;
-
-        @media screen and (max-width: 960px) {
-          width: 100%;
-          height: 180px;
-        }
-      }
-      .movie_card_title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #fff;
-
-        @media screen and (max-width: 960px) {
-          font-size: 14px;
-        }
-      }
-      .movie_card_desc {
-        font-size: 12px;
-        color: #e0e3e8;
-      }
-    }
-  }
-
-  .movies_cards {
-    display: flex;
-    width: 3200px;
-    position: relative;
-    transition: all 0.3s;
+    flex-direction: column;
     gap: 2rem;
-    .movieCard {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      cursor: pointer;
+    max-width: 1240px;
+    margin: 0 auto;
+    width: 100%;
 
-      .movie_card_image {
-        width: 250px;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 6px;
-      }
-      .movie_card_title {
-        font-size: 16px;
-        font-weight: 600;
+    .collection_header {
+      .collection_title {
         color: #fff;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 1rem 0;
       }
-      .movie_card_desc {
-        font-size: 12px;
-        color: #e0e3e8;
+    }
+
+    .grid_movies_card {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+
+      @media only screen and (max-width: 960px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media only screen and (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .movieCard {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        cursor: pointer;
+
+        .movie_card_image {
+          width: 300px;
+          height: 280px;
+          object-fit: cover;
+          border-radius: 6px;
+
+          @media screen and (max-width: 960px) {
+            width: 100%;
+            height: 180px;
+          }
+        }
+        .movie_card_title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #fff;
+
+          @media screen and (max-width: 960px) {
+            font-size: 14px;
+          }
+        }
+        .movie_card_desc {
+          font-size: 12px;
+          color: #e0e3e8;
+        }
       }
     }
   }

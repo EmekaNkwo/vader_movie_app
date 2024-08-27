@@ -1,4 +1,4 @@
-# OBIEX FRONTEND ASSESSMENT
+# MOVIE RECOMMENDATION APP
 
 ## Overview [Live Demo](https://obiex-nkwo.netlify.app/home)
 
