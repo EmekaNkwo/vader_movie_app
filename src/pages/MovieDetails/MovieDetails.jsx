@@ -58,7 +58,7 @@ function MovieDetails() {
         <>
           <MovieCredits title="Cast" />
           {/* <MoviesCollection title="Recommended Movies" /> */}
-          <RecommendedMovies title={"Similar Movies"} />
+          <RecommendedMovies title={"Recommended Movies"} />
         </>
       )}
     </div>
