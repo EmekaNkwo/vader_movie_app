@@ -18,8 +18,8 @@ const useMovieQuery = () => {
     queryFn: () => getMovie(id),
   });
   const recommendationQuery = useQuery({
-    queryKey: ["recommendation", "avatar"],
-    queryFn: () => getRecommendedMovies("avatar"),
+    queryKey: ["recommendation", movieQuery?.data?.original_title ?? ""],
+    queryFn: () => getRecommendedMovies(movieQuery?.data?.original_title ?? ""),
   });
 
   const videoQuery = useQuery({
