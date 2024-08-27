@@ -5,7 +5,6 @@ import {
   getMovieVideos,
   getRandomMovies,
   getRecommendedMovies,
-  getTrendingMovies,
 } from "../shared/api/fetchMovies";
 import useMediaQuery from "../shared/hooks/useMediaQuery";
 import { useMovieState } from "../state/movie";
