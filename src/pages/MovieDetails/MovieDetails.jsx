@@ -21,7 +21,15 @@ function MovieDetails() {
   const items = [
     {
       key: "1",
-      label: `Cast`,
+      label: (
+        <span
+          style={{
+            color: "#fff",
+          }}
+        >
+          Cast
+        </span>
+      ),
       children: (
         <>
           <MovieCredits id={id} />
@@ -30,7 +38,15 @@ function MovieDetails() {
     },
     {
       key: "2",
-      label: `Recommended Movies`,
+      label: (
+        <span
+          style={{
+            color: "#fff",
+          }}
+        >
+          Recommended Movies
+        </span>
+      ),
       children: (
         <>
           <MoviesCollection />
@@ -49,7 +65,7 @@ function MovieDetails() {
             items={items}
             style={{
               backgroundColor: "#1b1f32",
-              color: "#fff",
+              // color: "#fff",
               padding: "1rem",
             }}
           />

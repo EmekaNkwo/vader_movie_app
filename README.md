@@ -1,8 +1,10 @@
 # MOVIE RECOMMENDATION APP
 
-## Overview [Live Demo](https://obiex-nkwo.netlify.app/home)
+## Overview [Live Demo](https://vader-movie.netlify.app/home)
 
 This is a Simple Movie App that fetches data from the TMDB API which displays collections of movies, movie details and also recommendation for the selected movie using machine learning algorithms. The Application was built using React, React Query, Antd, SCSS, Webpack, Zustand.
+
+### Using the API Code [Github Link](https://github.com/EmekaNkwo/recommendation_app_api)
 
 ## Logs
 
