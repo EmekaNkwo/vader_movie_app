@@ -41,6 +41,7 @@ function MoviesCollection({ title }) {
     };
 
     fetchCollectionMovies();
+    // eslint-disable-next-line
   }, [collectionQuery?.data?.arr]);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function MoviesCollection({ title }) {
         `Error fetching collection: ${collectionQuery?.error?.message}`
       );
     }
-  }, [collectionQuery.status]);
+  }, [collectionQuery.status, collectionQuery?.error?.message]);
 
   return (
     <div className="movies_collection_container">

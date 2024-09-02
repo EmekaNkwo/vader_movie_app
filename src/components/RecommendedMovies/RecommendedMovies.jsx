@@ -41,6 +41,7 @@ const RecommendedMovies = ({ title }) => {
     };
 
     fetchSimilarMovies();
+    // eslint-disable-next-line
   }, [recommendationQuery?.data?.movies]);
 
   return (
